@@ -3,7 +3,7 @@ const desktopMenu = document.querySelector('.desktop-menu');
 const menuHamIcon = document.querySelector(".menu");
 const mobileMenu = document.querySelector(".mobile-menu")
 const menuCarritoIcon = document.querySelector('.navbar-shopping-car')
-const aside = document.querySelector('.product-detail')
+const asideShoppingCart = document.querySelector('#shoppingCartContainer')
 //**card Container 
 const container = document.querySelector('.cards-container');
 
@@ -12,14 +12,14 @@ menuHamIcon.addEventListener('click',toggleMobileMenu);
 menuCarritoIcon.addEventListener('click',toggleCarritoAside)
 function toggleDesktopMenu(){
     desktopMenu.classList.toggle('inactive'); //pone dependiendo si tiene o no
-    aside.classList.add('inactive');
+    asideShoppingCart.classList.add('inactive');
 }
 function toggleMobileMenu(){
-    aside.classList.add('inactive'); //this for evited error (combinated menus)
+    asideShoppingCart.classList.add('inactive'); //this for evited error (combinated menus)
      mobileMenu.classList.toggle('inactive'); //pone dependiendo si tiene o no
 }
 function toggleCarritoAside(){
-    aside.classList.toggle('inactive'); //pone dependiendo si tiene o no
+    asideShoppingCart.classList.toggle('inactive'); //pone dependiendo si tiene o no
     mobileMenu.classList.add('inactive'); //this is for not combinate two menus
     desktopMenu.classList.add('inactive');
 }
