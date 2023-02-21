@@ -6,22 +6,45 @@ const menuCarritoIcon = document.querySelector('.navbar-shopping-car')
 const asideShoppingCart = document.querySelector('#shoppingCartContainer')
 //**card Container 
 const container = document.querySelector('.cards-container');
+//**aaa */
+const productDetailContainer= document.querySelector('#productDetail');
+const productDetailCloseIcon = document.querySelector('.product-detail-close')
+
 
 emailMenu.addEventListener('click',toggleDesktopMenu);
 menuHamIcon.addEventListener('click',toggleMobileMenu);
 menuCarritoIcon.addEventListener('click',toggleCarritoAside)
+productDetailCloseIcon.addEventListener('click',closeProductDetailAside);
+
+
+
+
 function toggleDesktopMenu(){
     desktopMenu.classList.toggle('inactive'); //pone dependiendo si tiene o no
     asideShoppingCart.classList.add('inactive');
+    productDetailContainer.classList.add('inactive');
 }
 function toggleMobileMenu(){
+    mobileMenu.classList.toggle('inactive'); //pone dependiendo si tiene o no
+    productDetailContainer.classList.add('inactive');
     asideShoppingCart.classList.add('inactive'); //this for evited error (combinated menus)
-     mobileMenu.classList.toggle('inactive'); //pone dependiendo si tiene o no
+     
 }
 function toggleCarritoAside(){
     asideShoppingCart.classList.toggle('inactive'); //pone dependiendo si tiene o no
     mobileMenu.classList.add('inactive'); //this is for not combinate two menus
     desktopMenu.classList.add('inactive');
+    productDetailContainer.classList.add('inactive');
+
+}
+function openProductDetailAside(){
+    productDetailContainer.classList.remove('inactive') //this is for remove class inactive
+    desktopMenu.classList.add('inactive');
+    mobileMenu.classList.add('inactive');
+    asideShoppingCart.classList.add('inactive')
+}
+function closeProductDetailAside(){
+    productDetailContainer.classList.add('inactive') //this is for remove class inactive
 }
 
 //? This part is for create products
@@ -70,8 +93,10 @@ productList.push({
             const productCard=  document.createElement('div');
             productCard.classList.add('product-card');
          
-            const img = document.createElement('img');
-            img.setAttribute('src',product.image)
+            const productImg = document.createElement('img');
+            productImg.setAttribute('src',product.image)
+            //* THIS FOR VIEW DETAIL PRODUCT 
+            productImg.addEventListener('click',openProductDetailAside)
          
              const productInfo = document.createElement('div');
              productInfo.classList.add('product-info');
@@ -88,7 +113,7 @@ productList.push({
              productImgCart.setAttribute('src','/icons/bt_add_to_cart.svg')
          
              //? Insert inside the other element;
-             productCard.append(img,productInfo)
+             productCard.append(productImg,productInfo)
              productInfo.append(productInfoDiv,productInfoFigure);
              productInfoDiv.append(productPrice,productName);
              productInfoFigure.append(productImgCart);

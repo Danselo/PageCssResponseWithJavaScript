@@ -72,7 +72,7 @@ nav{
 }
 .navbar-shopping-car{
     position: relative;
-    
+    cursor: pointer;
 }
 .navbar-shopping-car div{
     width: 8px;
